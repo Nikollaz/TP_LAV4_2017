@@ -1,3 +1,5 @@
+import * as bootstrap from 'bootstrap';
+import * as $ from 'jquery';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -53,6 +55,9 @@ import { MapaDeGoogleComponent } from './componentes/mapa-de-google/mapa-de-goog
 import { AgmCoreModule } from '@agm/core';
 import { InputJugadoresComponent } from './componentes/input-jugadores/input-jugadores.component';
 import { SexoPipe } from './pipes/sexo.pipe';
+import { SudokuComponent } from './componentes/sudoku/sudoku.component';
+import { TaTeTiComponent } from './componentes/ta-te-ti/ta-te-ti.component';
+import { PptComponent } from './componentes/ppt/ppt.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +83,10 @@ import { SexoPipe } from './pipes/sexo.pipe';
     MapaDeGoogleComponent,
     JugadoresListadoComponent,
     InputJugadoresComponent,
-    SexoPipe
+    SexoPipe,
+    SudokuComponent,
+    TaTeTiComponent,
+    PptComponent
   ],
   imports: [
     BrowserModule,
