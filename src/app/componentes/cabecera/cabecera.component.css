@@ -1,35 +1,83 @@
 .panel
 {
-    height: 200px;
-    background-image: url("./../../../assets/imagenes/cabecera.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 400px;
+    background-color: transparent;
+    border:none;
+    box-shadow: none;
     position: relative;
 }
 
+.navbar {
+    padding: 3%;
+}
 
 .hero-text {
-text-align: center;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-color: #3E06B0;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #3E06B0;
 }
 
 .hero-text a {
-border: none;
-outline: 0;
-display: inline-block;
-padding: 10px 25px;
-color: black;
-background-color: #ddd;
-text-align: center;
-cursor: pointer;
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 25px;
+    color: black;
+    background-color: #ddd;
+    text-align: center;
+    cursor: pointer;
 }
 
 .hero-text a:hover {
-background-color: #555;
-color: white;
+    background-color: #555;
+    color: white;
+}
+
+.menu-inline {
+    display: inline-block !important;
+}
+
+li {
+    cursor: pointer;
+}
+
+.navbar-brand {
+    cursor: pointer;
+}
+
+#brand {
+    color: white;
+    display: inline-block !important;
+}
+
+a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    color: rgba(200,200,200,0.8);
+    border-color: #fff;
+}
+
+.nav>li>a {
+    padding: 20px;
+}
+
+.presentation-title{
+    font-size: 8em;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    background: linear-gradient(180deg,#fff 35%,#4e6773);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.presentation-subtitle {
+    font-size: 1.7em;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    font-family: Montserrat,Helvetica,Arial,sans-serif;
+    font-weight: 300;
 }

@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+   background-image: url("./assets/imagenes/wallpaper.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.custom-link{
+    background-color: transparent !important;
+}
+
+.custom-link span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.custom-link span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  color: white;
+}
+
+.custom-link:hover span {
+  padding-right: 25px;
+  color: white;
+}
+
+.custom-link:hover span:after {
+  opacity: 1;
+  right: 0;
+  color: white;
+}
