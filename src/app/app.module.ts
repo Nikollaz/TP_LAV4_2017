@@ -1,7 +1,8 @@
 import * as bootstrap from 'bootstrap';
 import * as $ from 'jquery';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
@@ -90,6 +91,7 @@ import { PptComponent } from './componentes/ppt/ppt.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     RuteandoModule,
     HttpModule,

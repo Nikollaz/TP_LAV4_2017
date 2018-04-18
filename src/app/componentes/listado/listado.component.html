@@ -1,14 +1,49 @@
-
 <!--input type="button" (click)="llamaService()" class="btn btn-info" value="Pulsame" > 
 <input type="button" (click)="llamaServicePromesa()" class="btn btn-info" value="Pulsame Promesa" --> 
 
 <!-- Centered Pills -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid menu-inline">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" title="Página principal" routerLink="/">
+        <span>
+          <img src="./../../assets/imagenes/team-utn.png" height="30px" alt="Logo"> <p id="brand">Sala de juegos</p></span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <ul class="nav navbar-nav menu-inline" style="padding-top: 5px">
+		<li><a (click)="llamaService()">Servicio</a></li>
+		<li><a (click)="llamaServicePromesa()">Serv Promesa</a></li>
+		<li><a (click)="llamaServicePromesa()">Serv observable</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right menu-inline" style="padding-top: 5px">
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-user"></span> Mis Datos</a>
+        </li>
+        <li>
+          <a href="/Login">
+            <span class="glyphicon glyphicon-log-out"></span> Salir</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<app-listado-de-resultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
+<!--
 <ul class="nav nav-pills nav-justified">
     <li class="active"><a routerLink="/Principal">Sala de Juegos</a></li>
     <li><a (click)="llamaService()">Servicio</a></li>
     <li><a (click)="llamaServicePromesa()">Serv Promesa</a></li>
     <li><a (click)="llamaServicePromesa()">Serv observable</a></li>
-  </ul>
+</ul>
   
 <app-listado-de-resultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
-
+-->

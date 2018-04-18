@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ArchivosJugadoresService}from './archivos-jugadores.service'
 @Injectable()
 export class JugadoresService {
-
+/*
   //peticion:any;
   constructor( public miHttp: ArchivosJugadoresService ) {
    // this.peticion = this.miHttp.traerJugadores();
@@ -41,5 +41,5 @@ filtrado:any;
 
     });
   }
-
+*/
 }

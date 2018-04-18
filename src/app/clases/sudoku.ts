@@ -1,9 +1,13 @@
-export class Sudoku {
+import { Juego } from '../clases/juego'
+
+export class Sudoku extends Juego{
 
  	solution:Array<any>;
  	numeroSolucion:any;
 
  	constructor() {
+
+ 		super();
 
  	 	this.solution = new Array<any>();
 
@@ -54,6 +58,30 @@ export class Sudoku {
 	  	this.numeroSolucion = Math.floor( ( Math.random() * arraySoluciones.length ) );
 
 	  	this.solution = arraySoluciones[ this.numeroSolucion ];
+
+  }
+
+  verificar(): boolean{
+
+  	let i:any = 0;
+
+  	let gridValues = new Array<any>();
+
+    this.solution.forEach(function(any,index){
+
+		gridValues.push( Number( ( <HTMLInputElement> document.getElementById("cell-" + String(index) ) ).value ) )
+
+  	});
+
+  	if( ( JSON.stringify(gridValues) === JSON.stringify(this.solution) ) === true){
+
+  		return true;
+
+  	} else {
+
+  		return false;
+
+  	}
 
   }
 

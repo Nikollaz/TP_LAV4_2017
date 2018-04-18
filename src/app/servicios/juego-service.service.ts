@@ -5,7 +5,7 @@ import { MiHttpService } from './mi-http/mi-http.service';
 
 @Injectable()
 export class JuegoServiceService {
-
+/*
   peticion:any;
   constructor( public miHttp: MiHttpService ) {
     this.peticion = this.miHttp.httpGetO("http://localhost:3003");
@@ -62,5 +62,5 @@ export class JuegoServiceService {
 
     return promesa;
   }
-
+*/ 
 }

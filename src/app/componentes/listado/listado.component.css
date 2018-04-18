@@ -26,3 +26,25 @@
     background: #55ACEE;
     color: white;
 }
+
+.menu-inline {
+    display: inline-block !important;
+}
+
+li {
+    cursor: pointer;
+}
+
+.navbar-brand {
+    cursor: pointer;
+}
+
+#brand {
+    color: white;
+    display: inline-block !important;
+}
+
+a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}

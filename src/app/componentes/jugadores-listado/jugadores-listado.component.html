@@ -1,11 +1,9 @@
-<ul class="nav nav-pills nav-justified">
+<!-- <ul class="nav nav-pills nav-justified">
   <li class="active"><a routerLink="/Principal">Ir a inicio</a></li>
   <li><a (click)="TraerTodos()">Todos los jugadores</a></li>
   <li><a (click)="TraerGanadores()">Los ganadores</a></li>
   <li><a (click)="TraerPerdedores()">Los perdedores</a></li>
 </ul>
-
-
 
 <table class="table table-condensed">
   <thead>
@@ -27,3 +25,52 @@
    
   </tbody>
 </table>
+-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid menu-inline">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" title="Página principal" routerLink="/">
+        <span>
+          <img src="./../../assets/imagenes/team-utn.png" height="30px" alt="Logo"> <p id="brand">Sala de juegos</p></span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <ul class="nav navbar-nav menu-inline" style="padding-top: 5px">
+    <li><a (click)="TraerTodos()">Todos los jugadores</a></li>
+    <!-- <li><a (click)="TraerGanadores()">Los ganadores</a></li> -->
+    <!-- <li><a (click)="TraerPerdedores()">Los perdedores</a></li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right menu-inline" style="padding-top: 5px">
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-user"></span> Mis Datos</a>
+        </li>
+        <li>
+          <a href="/Login">
+            <span class="glyphicon glyphicon-log-out"></span> Salir</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div *ngIf="showTable" class="container table-responsive">
+  <table id="jugadores" class="table table-striped table-bordered tabla-jugadores">
+    <thead class="thead-dark" id="tabla-jugadores-header">
+      <tr>
+        <th scope="col">Usuarios registrados</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-jugadores-body">
+      <tr *ngFor="let jugador of jugadores">
+        <td>{{jugador.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

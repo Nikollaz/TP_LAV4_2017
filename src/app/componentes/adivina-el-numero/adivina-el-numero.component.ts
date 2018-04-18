@@ -8,6 +8,7 @@ import { JuegoAdivina } from '../../clases/juego-adivina'
   styleUrls: ['./adivina-el-numero.component.css']
 })
 export class AdivinaElNumeroComponent implements OnInit {
+  /*
  @Output() enviarJuego: EventEmitter<any>= new EventEmitter<any>();
 
   nuevoJuego: JuegoAdivina;
@@ -85,8 +86,8 @@ export class AdivinaElNumeroComponent implements OnInit {
      }, 3000);
     console.info("objeto",x);
   
-   }  
+   } */
   ngOnInit() {
   }
-
+  
 }

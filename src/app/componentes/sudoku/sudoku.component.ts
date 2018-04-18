@@ -50,17 +50,9 @@ export class SudokuComponent implements OnInit {
 
   Validar(){
 
-  	let i:any = 0;
+  	let gano:boolean = this.sudoku.verificar();
 
-  	let gridValues = new Array<any>();
-
-  	this.sudoku.solution.forEach(function(any,index){
-
-  		gridValues.push( Number( ( <HTMLInputElement> document.getElementById("cell-" + String(index) ) ).value ) )
-
-  	});
-
-  	if( ( JSON.stringify(gridValues) === JSON.stringify(this.sudoku.solution) ) === true){
+  	if( gano === true ){
 
   		$('#modalFelicidades').modal('show');
 
