@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cabecera',
@@ -8,49 +7,9 @@ import { Router } from '@angular/router';
 })
 export class CabeceraComponent implements OnInit {
 
-	usuarioLogeado: string;
+  constructor() { }
 
-	constructor(public router: Router) { 
-
-		if( localStorage.getItem("usuarioLogeado") === null ){
-
-			$("#logeado").css("display", "none");
-			$("#noLogeado").css("display", "inline-flex");
-
-		} else {
-
-			this.usuarioLogeado = localStorage.getItem("usuarioLogeado");
-
-			$("#logeado").css("display", "inline-flex");
-			$("#noLogeado").css("display", "none");
-
-		}
-
-	}
-
-	ngOnInit() {
-
-		if( localStorage.getItem("usuarioLogeado") === null ){
-
-			$("#logeado").css("display", "none");
-			$("#noLogeado").css("display", "inline-flex");
-
-		} else {
-
-			this.usuarioLogeado = localStorage.getItem("usuarioLogeado");
-
-			$("#logeado").css("display", "inline-flex");
-			$("#noLogeado").css("display", "none");
-
-		}
-
-	}
-
-	desloguearse(){
-
-		localStorage.removeItem("usuarioLogeado");
-		//this.router.navigate(["/Principal"]); 
-		location.reload();
-	}
+  ngOnInit() {
+  }
 
 }

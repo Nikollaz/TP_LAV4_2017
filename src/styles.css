@@ -1,16 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
-
-body, html {
-  height: 100%;
-}
-
 body {
   background-image: url("./assets/imagenes/wallpaper.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
   background-attachment:fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .custom-link{
@@ -25,24 +18,24 @@ body {
 }
 
 .custom-link span:after {
-  content: '\00bb'; 
+  content: '\00bb';
   position: absolute;
   opacity: 0;
   top: 0;
   right: -20px;
   transition: 0.5s;
-  color: gray;
+  color: white;
 }
 
 .custom-link:hover span {
   padding-right: 25px;
-  color: gray;
+  color: white;
 }
 
 .custom-link:hover span:after {
   opacity: 1;
   right: 0;
-  color: gray;
+  color: white;
 }
 
 .list-group-item {

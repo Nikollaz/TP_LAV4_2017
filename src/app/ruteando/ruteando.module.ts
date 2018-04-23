@@ -28,33 +28,31 @@ import { PptComponent } from '../componentes/ppt/ppt.component';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-  {path: 'Jugadores' , component: JugadoresListadoComponent},
-  {path: '' , component: PrincipalComponent},
-  {path: 'Login' , component: LoginComponent},
-  {path: 'Mapa' , component: MapaDeGoogleComponent},
-  {path: 'QuienSoy' , component: QuienSoyComponent},
-  {path: 'Registro' , component: RegistroComponent},
-  {path: 'Principal' , component: PrincipalComponent},
-  {path: 'Listado' , component: ListadoComponent},
-  {path: 'Paises' , component: ListadoDePaisesComponent},
+{path: 'Jugadores' , component: JugadoresListadoComponent},
+{path: '' , component: PrincipalComponent},
+{path: 'Login' , component: LoginComponent},
+{path: 'Mapa' , component: MapaDeGoogleComponent},
+{path: 'QuienSoy' , component: QuienSoyComponent},
+{path: 'Registro' , component: RegistroComponent},
+{path: 'Principal' , component: PrincipalComponent},
+{path: 'Listado' , component: ListadoComponent},
+{path: 'Paises' , component: ListadoDePaisesComponent},
 
-  {path: 'Juegos' , component: JuegosComponent , children:
-      [
-        {path: '' , component: MenuCardComponent},
-        {path: 'Adivina' , component: AdivinaElNumeroComponent},
-        {path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
-        {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
-        {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
-        {path: 'Anagrama' , component: AnagramaComponent},
-        {path: 'Sudoku' , component: SudokuComponent},
-        {path: 'Tateti' , component: TaTeTiComponent},
-        {path: 'PPT' , component: PptComponent}
-      ]
-  },
-  
-  {path: '**' , component: ErrorComponent},
-  {path: 'error' , component: ErrorComponent}
-];
+{ path: 'Juegos' ,
+component: JuegosComponent ,
+children:
+     [{path: '' , component: MenuCardComponent},
+     {path: 'Adivina' , component: AdivinaElNumeroComponent},
+      {path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
+      {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
+      {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
+      {path: 'Anagrama' , component: AnagramaComponent},
+      {path: 'Sudoku' , component: SudokuComponent},
+      {path: 'Tateti' , component: TaTeTiComponent},
+      {path: 'PPT' , component: PptComponent}]
+},
+{path: '**' , component: ErrorComponent},
+{path: 'error' , component: ErrorComponent}];
 
 @NgModule({
   imports: [
