@@ -28,6 +28,8 @@ export class ListadoComponent implements OnInit {
   
   ngOnInit() {
     
+    this.llamaService();
+    
   }
 
   llamaService(){
@@ -35,8 +37,8 @@ export class ListadoComponent implements OnInit {
     this.listadoParaCompartir = new Array<Partida>();
 
     var headers = new HttpHeaders({
-      'Content-Type' : 'application/x-www-form-urlencoded',
-      'SessionToken' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQwOTYyOTcsImRhdGEiOnsiZW1haWwiOiJ0ZXN0MDEiLCJwZXJmaWwiOiJhZG1pbiJ9fQ.AI1nLwQeCo6Jk2w8YVr6YWcpX_dHJRNWj8Iv2ZAWtV4'
+      'Content-Type' : 'application/x-www-form-urlencoded'/*,
+      'SessionToken' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQwOTYyOTcsImRhdGEiOnsiZW1haWwiOiJ0ZXN0MDEiLCJwZXJmaWwiOiJhZG1pbiJ9fQ.AI1nLwQeCo6Jk2w8YVr6YWcpX_dHJRNWj8Iv2ZAWtV4'*/
     });
     this.http.get('http://www.njsr27.com/API/partidas', {
       headers: headers

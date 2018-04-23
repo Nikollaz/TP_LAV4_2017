@@ -1,57 +1,111 @@
+
+
 <!--div style="margin: 20% auto; width: 30%;">
-  <div class="row">
-    <div class="col-lg-6">
-      Usuario
-    </div>
-    <div class="col-lg-6">
-      <input type="text"  [(ngModel)]="usuario">
-    </div>
-  </div>
-  <div class="row" style="margin-top: 5px">
-    <div class="col-lg-6">
-      Clave
-    </div>
-    <div class="col-lg-6">
-      <input type="password" [(ngModel)]="clave">
-    </div>
-  </div>
-  <div class="row" style="text-align: center; margin-top: 10px">
-    <div class="col-lg-12">
-      <button (click)="Entrar()" class="btn btn-info btn-lg" >Entrar</button>
-    </div>
-  </div>
-</div-->
- <div class="container" >
-  <div class="jumbotron" style="padding:50px;">
-    <form action="return true;">
-      <div class="imgcontainer">
-        <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" max-width="104" >
-      </div>
-
-      <div class="container">
-        <label><b>Usuario</b></label>
-        <input type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
-
-        <label><b>Clave</b></label>
-        <input type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
-            
-        <button *ngIf="logeando"  (click)="MoverBarraDeProgreso()" >Ingresar</button>
-       
-        <div *ngIf="!logeando" class="progress">
-            <div class="progress-bar progress-bar-info progress-bar-striped active" [class]="clase" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="ProgresoDeAncho" >
-              {{progresoMensaje}} - {{progreso}}%
-            </div>
+   <div class="row">
+     <div class="col-lg-6">
+       Usuario
+     </div>
+     <div class="col-lg-6">
+       <input type="text"  [(ngModel)]="usuario">
+     </div>
+   </div>
+   <div class="row" style="margin-top: 5px">
+     <div class="col-lg-6">
+       Clave
+     </div>
+     <div class="col-lg-6">
+       <input type="password" [(ngModel)]="clave">
+     </div>
+   </div>
+   <div class="row" style="text-align: center; margin-top: 10px">
+     <div class="col-lg-12">
+       <button (click)="Entrar()" class="btn btn-info btn-lg" >Entrar</button>
+     </div>
+   </div>
+   </div-->
+<!--
+   <div class="container" >
+    <div class="jumbotron" style="padding:50px;">
+      <form action="return true;">
+        <div class="imgcontainer">
+          <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" max-width="104" >
+        </div>
+   
+        <div class="container">
+          <label><b>Usuario</b></label>
+          <input type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
+   
+          <label><b>Clave</b></label>
+          <input type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
+              
+          <button *ngIf="logeando"  (click)="MoverBarraDeProgreso()" >Ingresar</button>
+         
+          <div *ngIf="!logeando" class="progress">
+              <div class="progress-bar progress-bar-info progress-bar-striped active" [class]="clase" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="ProgresoDeAncho" >
+                {{progresoMensaje}} - {{progreso}}%
+              </div>
+          </div>
+         
+          <input type="checkbox" checked="checked"> Recordar mis datos
+        </div>
+   
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" class="cancelbtn">Cancelar</button>
+          <button type="button" class="aceptbtn" routerLink="/Registro" >Registrarse</button>
+          <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
         </div>
        
-        <input type="checkbox" checked="checked"> Recordar mis datos
+      </form>
+    </div>
+   </div>
+   -->
+<div class="container">
+   <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+      <div class="panel panel-info" >
+         <div class="panel-heading">
+            <div class="panel-title">Login</div>
+         </div>
+         <div style="padding-top:30px" class="panel-body" >
+            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+            <form id="loginform" class="form-horizontal" role="form">
+                <span id="emailError" style="visibility:hidden; color:red">El campo de usuario es obligatorio</span><br>   
+               <div style="margin-bottom: 25px" class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="email" type="text" class="form-control" name="email" value="" placeholder="Usuario">                                    
+               </div>
+               <span id="passwordError" style="visibility:hidden; color:red">El campo de password es obligatorio</span><br> 
+               <div style="margin-bottom: 25px" class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+               </div>
+               <div class="input-group">
+                  <div class="checkbox">
+                     <label>
+                        <input id="login-remember" type="checkbox" name="remember" value="1"> Recordarme
+                     </label>
+                  </div>
+               </div>
+               <div style="margin-top:10px" class="form-group">
+                  <!-- Button -->
+                  <div class="col-sm-12 controls">
+                     <button class="btn btn-success signupbtn" (click)="login()">Login</button><br><br>
+                     <div id="carga"></div>
+                     <h2 id="userError" style="visibility:hidden; color:red">No existe ese usuario!</h2><br>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="col-md-12 control">
+                     <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                        No tienes una cuenta?
+                        <a routerLink="/Registro">
+                          Registrate aqui!
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
       </div>
-
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancelar</button>
-        <button type="button" class="aceptbtn" routerLink="/Registro" >Registrarse</button>
-        <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
-      </div>
-     
-    </form>
-  </div>
+   </div>
 </div>
+

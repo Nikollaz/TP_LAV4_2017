@@ -5,15 +5,18 @@
       <a class="btn" href="https://github.com/Nikollaz"target="_blank">en GitHub <i class="fa fa-github"></i></a>
       <a class="btn" routerLink="/QuienSoy" >Quien Soy? <i class="fa fa-user"></i></a>
   </div>
-  
   <nav class="navbar navbar-fixed-top"> 
     <div class="container-fluid menu-inline">
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-right">
-          <li><a class="custom-link" routerLink="/Registro"><h3><span class="glyphicon glyphicon-user">   Registrarse</span></h3></a></li>
-          <li><a class="custom-link" routerLink="/Login"><h3><span class="glyphicon glyphicon-log-in">   Ingresar</span></h3></a></li>
+        <ul class="nav navbar-right log-menu" id="noLogeado" style="display:none;">
+          <li><a class="custom-link" routerLink="/Registro"><span class="glyphicon glyphicon-user">   Registrarse</span></a></li>
+          <li><a class="custom-link" routerLink="/Login"><span class="glyphicon glyphicon-log-in">   Ingresar</span></a></li>
+        </ul>
+        <ul class="nav navbar-right log-menu" id="logeado" style="display:none;">
+          <li><a class="user-logged"><span class="glyphicon glyphicon-user">   Bienvenido {{usuarioLogeado}}!</span></a></li>
+          <li (click)="desloguearse()"><a class="custom-link"><span class="glyphicon glyphicon-log-in">   Desloguearse</span></a></li>
         </ul>
       </div>
     </div>
   </nav>
-</div>
+</div> 

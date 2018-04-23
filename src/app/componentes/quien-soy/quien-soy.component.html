@@ -1,60 +1,131 @@
-  <nav class="navbar navbar-default">
-    <div class="container">
+<!-- <nav class="navbar navbar-default">
+   <div class="container">
+     <div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>                        
+       </button>
+       <a class="navbar-brand" href="./">Sala De Juegos</a>
+     </div>
+     <div class="collapse navbar-collapse" id="myNavbar">
+       <ul class="nav navbar-nav navbar-right">
+         <li><a href="./QuienSoy#quien">Quien</a></li>
+         <li><a href="/TP_LAV4_2017/QuienSoy#que">Ques es</a></li>
+         <li><a href="./QuienSoy#donde">Donde</a></li>
+       </ul>
+     </div>
+   </div>
+   </nav>
+   
+   <div id ="quiwn"class="container-fluid bg-1 text-center">
+   <h3 class="margin">Quién Soy?</h3>
+   <img src="./assets/imagenes/quiensoy.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
+   <h3>Soy Un alumno de la UTN FRA</h3>
+   </div>
+   
+   <div id ="que" class="container-fluid bg-2 text-center">
+   <h3 class="margin">Esto es un trabajo práctico</h3>
+   <p>Cada universidad, cada facultad, cada carrera y obviamente cada materia en particular tiene estrategias didácticas y formas de evaluación diferentes. A pesar de que en muchos casos las universidades intentan estandarizar la forma de dictar clase para generar un orden en las planificaciones cuatrimestre a cuatrimestre, las formas de evaluación son elementales tanto para las instituciones y profesores como para los alumnos. A través de la evaluación formativa el educador busca información en el alumno para lograr comprender cómo se está
+     produciendo el proceso de aprendizaje y poder reajustar los objetivos pedagógicos. Y para el alumno es una muestra del progreso que está logrando y si puede aplicar, materializar y darle visibilidad a la comprensión del tema. Según Black y William (1998), la evaluación formativa, ayuda a que los estudiantes sean independientes a la hora del aprendizaje, es decir, se presenta como receptor, autorregulador y centro de esa misma evaluación. </p>
+   <a href="#" class="btn btn-default btn-lg">
+     <span class="glyphicon glyphicon-file"></span> Descargar PDF
+   </a>
+   </div>
+   
+   <div id ="donde" class="container-fluid bg-3 text-center">    
+   <h3 class="margin">Dónde Funciona?</h3><br>
+   <div class="row">
+     <div class="col-sm-4">
+       <p>Con las tecnologias WEB que permiten desarrollar aplicaciones multiplataforma</p>
+       <img src="./assets/imagenes/quiensoy1.png" class="img-responsive margin imagenDeQuienSoy"  alt="Image">
+     </div>
+     <div class="col-sm-4"> 
+       <p>Principalmente orientada a la experiencia del usuario, garantizando que su funcionamieto sea fluido y pensado en el comportamiento del usuario y en la funcionalidad.</p>
+       <img src="./assets/imagenes/quiensoy2.jpg" class="img-responsive margin imagenDeQuienSoy" alt="Image">
+     </div>
+     <div class="col-sm-4"> 
+       <p>Para los sistemas operativos lideres en el mercado del consumo masivo</p>
+       <img src="./assets/imagenes/quiensoy3.png" class="img-responsive margin imagenDeQuienSoy" alt="Image">
+     </div>
+   </div>
+   </div>
+   
+   <footer class="container-fluid bg-4 text-center">
+   <p>Modificado por <a href="https://www.octavio.com.ar">www.octavio.com.ar</a></p> 
+   </footer>
+   
+   -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+   <div class="container-fluid menu-inline">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-        <a class="navbar-brand" href="./">Sala De Juegos</a>
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" title="Página principal" routerLink="/">
+            <span>
+               <img src="./../../assets/imagenes/team-utn.png" height="30px" alt="Logo"> 
+               <p id="brand">Sala de juegos</p>
+            </span>
+         </a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="./QuienSoy#quien">Quien</a></li>
-          <li><a href="/TP_LAV4_2017/QuienSoy#que">Ques es</a></li>
-          <li><a href="./QuienSoy#donde">Donde</a></li>
-        </ul>
+         <ul class="nav navbar-nav navbar-right menu-inline" style="padding-top: 5px">
+            <li>
+               <a href="/Principal">
+               <span class="glyphicon glyphicon-menu-left"></span>Volver</a>
+            </li>
+         </ul>
       </div>
-    </div>
-  </nav>
-  
-  <!-- First Container -->
-  <div id ="quiwn"class="container-fluid bg-1 text-center">
-    <h3 class="margin">Quién Soy?</h3>
-    <img src="./assets/imagenes/quiensoy.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
-    <h3>Soy Un alumno de la UTN FRA</h3>
-  </div>
-  
-  <!-- Second Container -->
-  <div id ="que" class="container-fluid bg-2 text-center">
-    <h3 class="margin">Esto es un trabajo práctico</h3>
-    <p>Cada universidad, cada facultad, cada carrera y obviamente cada materia en particular tiene estrategias didácticas y formas de evaluación diferentes. A pesar de que en muchos casos las universidades intentan estandarizar la forma de dictar clase para generar un orden en las planificaciones cuatrimestre a cuatrimestre, las formas de evaluación son elementales tanto para las instituciones y profesores como para los alumnos. A través de la evaluación formativa el educador busca información en el alumno para lograr comprender cómo se está
-      produciendo el proceso de aprendizaje y poder reajustar los objetivos pedagógicos. Y para el alumno es una muestra del progreso que está logrando y si puede aplicar, materializar y darle visibilidad a la comprensión del tema. Según Black y William (1998), la evaluación formativa, ayuda a que los estudiantes sean independientes a la hora del aprendizaje, es decir, se presenta como receptor, autorregulador y centro de esa misma evaluación. </p>
-    <a href="#" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-file"></span> Descargar PDF
-    </a>
-  </div>
-  
-  <!-- Third Container (Grid) -->
-  <div id ="donde" class="container-fluid bg-3 text-center">    
-    <h3 class="margin">Dónde Funciona?</h3><br>
-    <div class="row">
-      <div class="col-sm-4">
-        <p>Con las tecnologias WEB que permiten desarrollar aplicaciones multiplataforma</p>
-        <img src="./assets/imagenes/quiensoy1.png" class="img-responsive margin imagenDeQuienSoy"  alt="Image">
+   </div>
+</nav>
+<!-- NAVBAR CODE END -->
+<div class="container">
+   <div class="row">
+      <div class="col-md-12 text-center">
+         <h2>Quién Soy?</h2>
+         Soy Un alumno de la UTN FRA
+         <br />
       </div>
-      <div class="col-sm-4"> 
-        <p>Principalmente orientada a la experiencia del usuario, garantizando que su funcionamieto sea fluido y pensado en el comportamiento del usuario y en la funcionalidad.</p>
-        <img src="./assets/imagenes/quiensoy2.jpg" class="img-responsive margin imagenDeQuienSoy" alt="Image">
+   </div>
+   <!-- USER PROFILE ROW STARTS-->
+   <div class="row">
+      <div class="col-md-3 col-sm-3">
+         <div class="user-wrapper">
+            <img src="./assets/imagenes/quiensoy.jpg" class="img-responsive profileImg" /> 
+            <div class="description">
+               <h4> Nicolas Saavedra</h4>
+               <h5> <strong> Software developer </strong></h5>
+               <hr />
+               <a href="#" class="btn btn-danger btn-sm"> <i class="fa fa-user-plus" ></i> &nbsp;Profile + </a> 
+            </div>
+         </div>
       </div>
-      <div class="col-sm-4"> 
-        <p>Para los sistemas operativos lideres en el mercado del consumo masivo</p>
-        <img src="./assets/imagenes/quiensoy3.png" class="img-responsive margin imagenDeQuienSoy" alt="Image">
+      <div class="col-md-9 col-sm-9  user-wrapper">
+         <div class="description">
+            <h3> Nicolas' Biography : </h3>
+            <hr />
+            <p>
+              Software Developer with experience in Java and Salesforce. In my last projects, I have also used Javascript, HTML, CSS, AngularJS, Maven, MySQL and Spring MVC.
+            </p>
+            <p>
+              I am an open-minded developer that can easily adjust to different workplaces and numerous tasks. Punctuality and organization are my priorities. As a reliable worker, completing my assigned tasks to perfection is always my main goal.
+            </p>
+            <h3> Social Links: </h3>
+            <hr />
+            <a href="#" class="btn btn-social btn-facebook">
+            <i class="fa fa-facebook"></i>&nbsp; Facebook </a>
+            <a href="#" class="btn btn-social btn-google">
+            <i class="fa fa-google-plus"></i>&nbsp; Google</a>
+            <a href="#" class="btn btn-social btn-twitter">
+            <i class="fa fa-twitter"></i>&nbsp; Twitter </a>
+            <a href="#" class="btn btn-social btn-linkedin">
+            <i class="fa fa-linkedin"></i>&nbsp; Linkedin </a>
+         </div>
       </div>
-    </div>
-  </div>
-  
-  <!-- Footer -->
-  <footer class="container-fluid bg-4 text-center">
-    <p>Modificado por <a href="https://www.octavio.com.ar">www.octavio.com.ar</a></p> 
-  </footer>
+   </div>
+   <!-- USER PROFILE ROW END-->
+</div>
