@@ -8,10 +8,43 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
-    private router: Router) { }
+  usuarioLogeado: string;
+
+  constructor(private route: ActivatedRoute, private router: Router) { 
+
+    if( localStorage.getItem("usuarioLogeado") === null ){
+
+      $("#logeado").css("display", "none");
+      $("#noLogeado").css("display", "inline-block");
+
+    } else {
+
+      this.usuarioLogeado = localStorage.getItem("usuarioLogeado");
+
+      $("#logeado").css("display", "inline-block");
+      $("#noLogeado").css("display", "none");
+
+    }
+
+
+  }
 
   ngOnInit() {
+
+    if( localStorage.getItem("usuarioLogeado") === null ){
+
+      $("#logeado").css("display", "none");
+      $("#noLogeado").css("display", "inline-block");
+
+    } else {
+
+      this.usuarioLogeado = localStorage.getItem("usuarioLogeado");
+
+      $("#logeado").css("display", "inline-block");
+      $("#noLogeado").css("display", "none");
+
+    }
+
   }
 
   Juego(tipo: string) {
@@ -41,6 +74,16 @@ export class MenuComponent implements OnInit {
           this.router.navigate(['/Juegos/PPT']);
       break;
     }
+  }
+
+  desloguearse(){
+
+    localStorage.removeItem("usuarioLogeado");
+    if(this.router.url === "/")
+      this.router.navigate(["/Principal"]);
+    else
+      this.router.navigate(["/"]);
+    
   }
 
 }

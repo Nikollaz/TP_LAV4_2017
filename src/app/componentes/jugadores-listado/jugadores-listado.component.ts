@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JugadoresService } from '../../servicios/jugadores.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Jugador } from '../../clases/jugador';
 
@@ -11,6 +12,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./jugadores-listado.component.css']
 })
 export class JugadoresListadoComponent implements OnInit {
+
+  usuarioLogeado: string;
   
   public jugadores: Array<Jugador>;
 
@@ -18,13 +21,44 @@ export class JugadoresListadoComponent implements OnInit {
   
   miJugadoresServicio:JugadoresService;
   
-  constructor(private http: HttpClient, serviceJugadores:JugadoresService) {
+  constructor(private http: HttpClient, serviceJugadores:JugadoresService, private route: ActivatedRoute, private router: Router) {
+
+    if( localStorage.getItem("usuarioLogeado") === null ){
+
+      $("#logeado").css("display", "none");
+      $("#noLogeado").css("display", "inline-block");
+
+    } else {
+
+      this.usuarioLogeado = localStorage.getItem("usuarioLogeado");
+
+      $("#logeado").css("display", "inline-block");
+      $("#noLogeado").css("display", "none");
+
+    }
 
     this.jugadores = new Array<Jugador>();
     
   }
     
   ngOnInit() {
+
+    if( localStorage.getItem("usuarioLogeado") === null ){
+
+      $("#logeado").css("display", "none");
+      $("#noLogeado").css("display", "inline-block");
+
+    } else {
+
+      this.usuarioLogeado = localStorage.getItem("usuarioLogeado");
+
+      $("#logeado").css("display", "inline-block");
+      $("#noLogeado").css("display", "none");
+
+    }
+
+    this.TraerTodos();
+
   }
 
   TraerTodos(){
@@ -32,8 +66,8 @@ export class JugadoresListadoComponent implements OnInit {
     this.jugadores = new Array<Jugador>();
 
     var headers = new HttpHeaders({
-      'Content-Type' : 'application/x-www-form-urlencoded',
-      'SessionToken' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjQwOTYyOTcsImRhdGEiOnsiZW1haWwiOiJ0ZXN0MDEiLCJwZXJmaWwiOiJhZG1pbiJ9fQ.AI1nLwQeCo6Jk2w8YVr6YWcpX_dHJRNWj8Iv2ZAWtV4'
+      'Content-Type' : 'application/x-www-form-urlencoded'/*,
+      'SessionToken' : localStorage.getItem("SessionToken")*/
     });
     this.http.get('http://www.njsr27.com/API/empleados', {
       headers: headers
@@ -56,6 +90,16 @@ export class JugadoresListadoComponent implements OnInit {
       this.listado= data;
 
     })*/
+  }
+
+  desloguearse(){
+
+    localStorage.removeItem("usuarioLogeado");
+    if(this.router.url === "/")
+      this.router.navigate(["/Principal"]);
+    else
+      this.router.navigate(["/"]);
+    
   }
   
   /*

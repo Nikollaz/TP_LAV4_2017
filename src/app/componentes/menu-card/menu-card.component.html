@@ -1,86 +1,80 @@
 <div class="container" >
-    <div class="card">
-      <img class="img-thumbnail"   src="./assets/imagenes/cerebro.jpg" alt="Avatar" style="width:100%">
-      <h1>Agilidad aritmética </h1>
-      <p class="title">Juego de agilidad mental</p>
-      <p>UTN FRA</p>
-      <div>
-        <a href="#"><i class="fa fa-dribbble"></i></a> 
-        <a href="#"><i class="fa fa-twitter"></i></a> 
-        <a href="#"><i class="fa fa-linkedin"></i></a> 
-        <a href="#"><i class="fa fa-facebook"></i></a> 
-      </div>
-      <p>           <button class="button"  (click)="Juego('Agilidad')">Jugar</button></p>
-    
-    </div>
-  
-    <div class="card">
-      <img class="img-thumbnail" src="./assets/imagenes/ppt.jpg" alt="Avatar" style="width:100%">
-      <h1>Piedra Papel o Tijera</h1>
-      <p class="title">Juega contra la máquina</p>
-      <p>UTN FRA</p>
-      <div>
-        <a href="#"><i class="fa fa-dribbble"></i></a> 
-        <a href="#"><i class="fa fa-twitter"></i></a> 
-        <a href="#"><i class="fa fa-linkedin"></i></a> 
-        <a href="#"><i class="fa fa-facebook"></i></a> 
-      </div>
-      <p>           <button class="button"  (click)="Juego('PPT')">Jugar</button></p>
-    </div>
-    <div class="card">
-      <img  class="img-thumbnail"  src="./assets/imagenes/adivina.png" alt="Avatar" style="width:100%">
-      <h1>Adivina el número secreto</h1>
-      <p class="title">Juega de estrategia</p>
-      <p>UTN FRA</p>
-      <div>
-        <a href="#"><i class="fa fa-dribbble"></i></a> 
-        <a href="#"><i class="fa fa-twitter"></i></a> 
-        <a href="#"><i class="fa fa-linkedin"></i></a> 
-        <a href="#"><i class="fa fa-facebook"></i></a> 
-      </div>
-      <p>           <button class="button"  (click)="Juego('Adivina')">Jugar</button></p>
-    </div>
 
-    <div class="card">
-      <img  class="img-thumbnail" src="./assets/imagenes/sudoku.png" alt="Avatar" style="width:100%">
-      <h1>Sudoku</h1>
-      <p class="title">Agilidad numerica</p>
-      <p>UTN FRA</p>
-      <div>
-        <a href="#"><i class="fa fa-dribbble"></i></a> 
-        <a href="#"><i class="fa fa-twitter"></i></a> 
-        <a href="#"><i class="fa fa-linkedin"></i></a> 
-        <a href="#"><i class="fa fa-facebook"></i></a> 
-      </div> 
-      <p>           <button class="button"  (click)="Juego('Sudoku')">Jugar</button></p>
-    </div>
+  <div class="container main-body">
 
-    <div class="card">
-      <img  class="img-thumbnail"  src="./assets/imagenes/Anagrama.jpg" alt="Avatar" style="width:100%">
-      <h1>Anagrama</h1>
-      <p class="title">Conocimiento del lenguaje</p>
-      <p>UTN FRA</p>
-      <div>
-        <a href="#"><i class="fa fa-dribbble"></i></a> 
-        <a href="#"><i class="fa fa-twitter"></i></a> 
-        <a href="#"><i class="fa fa-linkedin"></i></a> 
-        <a href="#"><i class="fa fa-facebook"></i></a> 
-      </div> 
-      <p>           <button class="button"  (click)="Juego('Anagrama')">Jugar</button></p>
-    </div>
+   <div class="list-group">
+      <!-- Agilidad aritmética -->
+      <a class="list-group-item list-group-item-action css3button" (click)="Juego('Agilidad')">
+         <div class="media">
+            <div class="media-left">
+               <img class="media-object img-circle imagenDeMenu img-circle" src="./assets/imagenes/cerebro.jpg" alt="Avatar">
+            </div>
+            <div class="media-body">
+               <h4 class="list-group-item-heading">Agilidad aritmética</h4>
+               <p class="list-group-item-text game-description">Juego de agilidad mental que consiste en presentar una cuenta aritmética que el jugador tendra un tiempo para contestar</p>
+            </div>
+         </div>
+      </a>
+      <!-- Piedra Papel o Tijera -->
+      <a class="list-group-item list-group-item-action css3button" (click)="Juego('PPT')">
+         <div class="media">
+            <div class="media-left">
+               <img class="media-object img-circle imagenDeMenu img-circle" src="./assets/imagenes/ppt.jpg" alt="Avatar">
+            </div>
+            <div class="media-body">
+               <h4 class="list-group-item-heading">Piedra Papel o Tijera</h4>
+               <p class="list-group-item-text game-description">Juega contra la máquina eligiendo una de las opciones</p>
+            </div>
+         </div>
+      </a>
+      <!-- Adivina el número secreto -->
+      <a class="list-group-item list-group-item-action css3button" (click)="Juego('Adivina')">
+         <div class="media">
+            <div class="media-left">
+               <img class="media-object img-circle imagenDeMenu img-circle" src="./assets/imagenes/adivina.png" alt="Avatar">
+            </div>
+            <div class="media-body">
+               <h4 class="list-group-item-heading">Adivina</h4>
+               <p class="list-group-item-text game-description">Juego de estrategia que consiste en adivinar el número secreto</p>
+            </div>
+         </div>
+      </a>
+      <!-- Sudoku -->
+      <a class="list-group-item list-group-item-action css3button" (click)="Juego('Sudoku')">
+         <div class="media">
+            <div class="media-left">
+               <img class="media-object img-circle imagenDeMenu img-circle" src="./assets/imagenes/sudoku.png" alt="Avatar">
+            </div>
+            <div class="media-body">
+               <h4 class="list-group-item-heading">Sudoku</h4>
+               <p class="list-group-item-text game-description">Juego que consiste en llenar la grilla con numeros del 1 al 9, respetando que no repitan tanto en columna/fila y sector de 3x3</p>
+            </div>
+         </div>
+      </a>
+      <!-- Anagrama -->
+      <a class="list-group-item list-group-item-action css3button" (click)="Juego('Anagrama')">
+         <div class="media">
+            <div class="media-left">
+               <img class="media-object img-circle imagenDeMenu img-circle" src="./assets/imagenes/Anagrama.jpg" alt="Avatar">
+            </div>
+            <div class="media-body">
+               <h4 class="list-group-item-heading">Anagrama</h4>
+               <p class="list-group-item-text game-description">Juego que consiste en la presentacion de una palabra desordenada que el jugador debe adivinar, mostrando su conocimiento del lenguaje</p>
+            </div>
+         </div>
+      </a>   
+      <!-- Tateti -->
+      <a class="list-group-item list-group-item-action css3button" (click)="Juego('TaTeTi')">
+         <div class="media">
+            <div class="media-left">
+               <img class="media-object img-circle imagenDeMenu img-circle" src="./assets/imagenes/tateti.png" alt="Avatar">
+            </div>
+            <div class="media-body">
+               <h4 class="list-group-item-heading">Tateti</h4>
+               <p class="list-group-item-text game-description">Prueba tu ingenio contra la maquina</p>
+            </div>
+         </div>
+      </a>   
 
-    <div class="card">
-      <img  class="img-thumbnail"  src="./assets/imagenes/tateti.png" alt="Avatar" style="width:100%">
-      <h1>Tateti</h1>
-      <p class="title">Prueba tu ingenio</p>
-      <p>UTN FRA</p>
-      <div>
-        <a href="#"><i class="fa fa-dribbble"></i></a> 
-        <a href="#"><i class="fa fa-twitter"></i></a> 
-        <a href="#"><i class="fa fa-linkedin"></i></a> 
-        <a href="#"><i class="fa fa-facebook"></i></a> 
-      </div> 
-      <p>           <button class="button"  (click)="Juego('TaTeTi')">Jugar</button></p>
-    </div>
-
-  </div>
+   </div>
+</div>

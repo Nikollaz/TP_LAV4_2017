@@ -3,7 +3,7 @@
 
 <!-- Centered Pills -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid menu-inline">
+  <div class="container-fluid menu-inline menu-juegos">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -17,21 +17,22 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
 
-      <ul class="nav navbar-nav menu-inline" style="padding-top: 5px">
-		<li><a (click)="llamaService()">Servicio</a></li>
-		<li><a (click)="llamaServicePromesa()">Serv Promesa</a></li>
-		<li><a (click)="llamaServicePromesa()">Serv observable</a></li>
+      <ul class="nav navbar-nav menu-inline menu-juegos" style="padding-top: 5px">
+    		<!-- <li><a (click)="llamaService()">Servicio</a></li>
+    		<li><a (click)="llamaServicePromesa()">Serv Promesa</a></li>
+    		<li><a (click)="llamaServicePromesa()">Serv observable</a></li> -->
       </ul>
-      <ul class="nav navbar-nav navbar-right menu-inline" style="padding-top: 5px">
-        <li>
-          <a href="#">
-            <span class="glyphicon glyphicon-user"></span> Mis Datos</a>
-        </li>
-        <li>
-          <a href="/Login">
-            <span class="glyphicon glyphicon-log-out"></span> Salir</a>
-        </li>
+
+      <ul class="nav navbar-nav navbar-right menu-inline" id="logeado" style="padding-top: 5px; display:none;">
+        <li> <a routerLink="/MisDatos"><span class="glyphicon glyphicon-user"></span> Mis Datos</a> </li>
+        <li (click)="desloguearse()"> <a> <span class="glyphicon glyphicon-log-out"></span> Salir</a> </li>
       </ul>
+
+      <ul class="nav navbar-nav navbar-right menu-inline" id="noLogeado" style="padding-top: 5px; display:none;">
+        <li> <a routerLink="/Registro"> <span class="glyphicon glyphicon-user"></span> Registrarse</a> </li>
+        <li> <a routerLink="/Login"> <span class="glyphicon glyphicon-log-in"></span> Ingresar</a> </li>
+      </ul>
+
     </div>
   </div>
 </nav>
