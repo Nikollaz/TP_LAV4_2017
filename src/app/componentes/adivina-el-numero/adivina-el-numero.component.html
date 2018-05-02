@@ -28,7 +28,7 @@
          <div class="vertical-alignment-helper">
             <div class="modal-dialog vertical-align-center">
                <div class="modal-content">
-                  <div class="modal-header">
+                  <div class="modal-header" style='color: white; background-color: gray;'>
                      <h4 class="modal-title" id="myModalLabelFalta">Todavia no esta completo, siga intentando!</h4>
                      <button type="button" class="close" data-dismiss="modal">
                      <span aria-hidden="true">&times;</span>
@@ -44,7 +44,7 @@
          <div class="vertical-alignment-helper">
             <div class="modal-dialog vertical-align-center">
                <div class="modal-content">
-                  <div class="modal-header">
+                  <div class="modal-header" style='color: white; background-color: green;'>
                      <h4 class="modal-title" id="myModalLabel">Felicidades!</h4>
                      <h2 id="userErrorTitle" style="visibility:hidden; color:red">Error</h2><br>
                      <button type="button" class="close" data-dismiss="modal">
@@ -53,7 +53,8 @@
                      </button>  
                   </div>
                   <div clasS="modal-body">
-                     <h5 id="myModalLabel">Ud termino en {{segundosFinales}} segundos con {{reintentosFinales}} reintentos</h5>
+                     <div id="myModalLabelImg"><img style="max-width: 15%; margin-top: 4%;" src="../../assets/imagenes/gano.png"/></div>
+                     <h5 class="myModalLabelBody" id="myModalLabel">Ud termino en {{segundosFinales}} segundos con {{reintentosFinales}} reintentos</h5>
                      <h2 id="userErrorBody" style="visibility:hidden; color:red">Ocurrio un error al intentar guardar su partida</h2><br>
                   </div>
                </div>

@@ -243,6 +243,30 @@ export class TaTeTiComponent implements OnInit {
       	
 		if( localStorage.getItem("success") === "1"){
 
+			if(titulo==="Felicidades!"){
+				$('#myModalLabelImg').html("<img style='max-width: 15%; margin-top: 4%;' src='../../assets/imagenes/gano.png'></img>");
+				$('#customModalHeader').css({
+					"color": "white",
+					"background-color": "green" 
+				});
+			}
+
+			if(titulo==="Lastima!"){
+				$('#myModalLabelImg').html("<img style='max-width: 15%; margin-top: 4%;' src='../../assets/imagenes/perdio.png'></img>");
+				$('#customModalHeader').css({
+					"color": "white",
+					"background-color": "red" 
+				});
+			}
+
+			if(titulo==="Casi!"){
+				$('#myModalLabelImg').html("<img style='max-width: 15%; margin-top: 4%;' src='../../assets/imagenes/empato.png'></img>");
+				$('#customModalHeader').css({
+					"color": "white",
+					"background-color": "gray" 
+				});
+			}
+
 			$('#myModalLabelHeader').html(titulo);
 			$('#myModalLabelBody').html(mensaje);
 			$('#modalFelicidadesLogged').modal('show');

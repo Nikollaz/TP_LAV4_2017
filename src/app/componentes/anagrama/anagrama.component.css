@@ -277,3 +277,9 @@ background-color: rgba(150,150,150,0.9);
 .reintentos {
     margin-top: 80%;
 }
+
+.myModalLabelBody {
+  margin-top: 5%;
+  font-size: 2.25rem;
+  font-weight: 700;
+}

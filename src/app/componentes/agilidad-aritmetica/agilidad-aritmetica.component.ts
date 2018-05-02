@@ -142,7 +142,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
             $("#userErrorBody").css("visibility", "visible");
 
           } else {
-
+            
             $('#modalFelicidadesLogged').modal('show');
 
           }
