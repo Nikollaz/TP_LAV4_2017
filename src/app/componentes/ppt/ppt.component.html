@@ -1,3 +1,70 @@
-<p>
-  ppt works!
-</p>
+<div class="container">
+   <div class="row">
+      <div class="col-sm-10">
+         <h1 class="presentation-title">Piedra papel o tijera</h1>
+         <br><br><br>
+         <div class="board" id="board">
+	         <div id="eleccionUsuario" style="visibility:hidden;">
+	         	<button class="PPTbutton" (click)="juego('Piedra')" >Piedra<br><img src="./../../assets/imagenes/rock.png" height="50px"></button>
+	         	<button class="PPTbutton" (click)="juego('Papel')" >Papel<br><img src="./../../assets/imagenes/paper.png" height="50px"></button>
+	         	<button class="PPTbutton" (click)="juego('Tijera')" >Tijera<br><img src="./../../assets/imagenes/scissor.png" height="50px"></button>
+	         </div>
+	         <div id="eleccionMaquina" style="visibility:hidden;">
+	         	<button id="maquinaPiedra" class="PPTbutton" style="visibility:hidden;" disabled>Piedra<br><img src="./../../assets/imagenes/rock.png" height="50px"></button>
+	         	<button id="maquinaPapel" class="PPTbutton" style="visibility:hidden;" disabled>Papel<br><img src="./../../assets/imagenes/paper.png" height="50px"></button>
+	         	<button id="maquinaTijera" class="PPTbutton" style="visibility:hidden;" disabled>Tijera<br><img src="./../../assets/imagenes/scissor.png" height="50px"></button>
+	         </div>
+         </div>
+         <button id="nuevoJuego" class="button btn btn-success" (click)="NuevoJuego()">Jugar</button>
+         <!-- <button id="validarJuego" class="button btn btn-success" (click)="Validar()" disabled>Validar</button> -->
+         <!-- <button id="test" class="button btn btn-danger" (click)="test()">test</button> -->
+         <div id="carga"></div>
+      </div>
+      <!-- MODAL Resultado -->
+      <div class="modal fade" id="modalFelicidadesLogged" tabindex="-1" role="dialog" aria-labelledby="myModalLabelHeader" aria-hidden="true">
+         <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabelHeader"></h4>
+                     <h2 id="userErrorTitle" style="display:none; color:red">Error</h2><br>
+                     <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                     </button>  
+                  </div>
+                  <div clasS="modal-body">
+                     <h5 id="myModalLabelBody"></h5>
+                     <h2 id="userErrorBody" style="display:none; color:red">Ocurrio un error al intentar guardar su partida</h2><br>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- MODAL NO LOGGEADO -->
+      <div class="modal fade" id="modalNotLogged" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabel">Error</h4>
+                     <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                     </button>  
+                  </div>
+                  <div clasS="modal-body">
+                    <h5>Necesita estar logeado o registrado para poder guardar sus partidas!</h5>
+                    <button class="button btn btn-success" (click)="loguearse()">Loguearse</button> 
+                    <button class="button btn btn-primary" (click)="registrarse()">Registrarse</button>
+                    <button class="button btn btn-danger" data-dismiss="modal">
+                       <span aria-hidden="true">Cancelar</span>
+                    </button>  
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</div>

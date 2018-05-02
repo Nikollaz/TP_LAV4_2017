@@ -23,6 +23,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MiHttpService } from './servicios/mi-http/mi-http.service'; 
 import { PaisesService } from './servicios/paises.service'; 
+import { LoginService } from './servicios/login.service';
 
 import { JugadoresService } from './servicios/jugadores.service'; 
 import{ ArchivosJugadoresService} from './servicios/archivos-jugadores.service'; 
@@ -114,7 +115,7 @@ import { MisDatosComponent } from './componentes/mis-datos/mis-datos.component';
     // importo el ruteo
     // RouterModule.forRoot(MiRuteo)
   ],
-  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
+  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

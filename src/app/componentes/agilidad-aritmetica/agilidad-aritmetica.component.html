@@ -1,38 +1,110 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--app-menu></app-menu-->
-<!-- index.html -->
+<div class="container">
+   <div class="row">
+      <div class="col-sm-8">
+         <h1 class="presentation-title">Agilidad aritmetica</h1>
+         <h1 class="presentation-subTitle">(Division solamente poner la parte entera)</h1><br><br>
+         <h1 class="presentation-subSubTitle">Tiene 25 segundos!</h1>
+         <br><br><br>
+         <div class="board" id="board">
+           <div id="palabra" style="visibility:hidden;">
+            <h1 id='primerNumero'></h1>
+            <h1 id='operando'></h1>
+            <h1 id='segundoNumero'></h1>
+           </div>
+           <div id="eleccionUsuario" style="visibility:hidden;">
+            <input id="eleccionUsuarioInput" class="eleccionUsuario" type="number" name="palabraElegida" [(ngModel)]="this.JuegoAgilidad.eleccionUsuario">
+           </div>
+         </div>
+         <button id="nuevoJuego" class="button btn btn-success" (click)="NuevoJuego()">Jugar</button>
+         <button id="validarJuego" class="button btn btn-success" (click)="Validar()" disabled>Validar</button>
+         <div id="carga"></div>
+      </div>
+    <div class="col-sm-4">
+     <div class="enjoy-css tiempo">
+        Tiempo: <br> {{ counter | async }}
+     </div><br>
+     <div class="enjoy-css reintentos">
+        Reintentos: {{ reintentos }}
+     </div>
+    </div>
+      <!-- MODAL TODAVIA NO GANA -->
+      <div class="modal fade" id="modalFalta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabel">Todavia no esta completo, siga intentando!</h4>
+                     <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                     </button>       
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- MODAL GANO LOGGEADO -->
+      <div class="modal fade" id="modalFelicidadesLogged" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabel">Felicidades!</h4>
+                     <h2 id="userErrorTitle" style="visibility:hidden; color:red">Error</h2><br>
+                     <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                     </button>  
+                  </div>
+                  <div clasS="modal-body">
+                     <h5 id="myModalLabel">Ud termino en {{segundosFinales}} segundos con {{reintentosFinales}} reintentos</h5>
+                     <h2 id="userErrorBody" style="visibility:hidden; color:red">Ocurrio un error al intentar guardar su partida</h2><br>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- MODAL NO LOGGEADO -->
+      <div class="modal fade" id="modalNotLogged" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabel">Error</h4>
+                     <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                     </button>  
+                  </div>
+                  <div clasS="modal-body">
+                    <h5>Necesita estar logeado o registrado para poder guardar sus partidas!</h5>
+                    <button class="button btn btn-success" (click)="loguearse()">Loguearse</button> 
+                    <button class="button btn btn-primary" (click)="registrarse()">Registrarse</button>
+                    <button class="button btn btn-danger" data-dismiss="modal">
+                       <span aria-hidden="true">Cancelar</span>
+                    </button>  
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
 
+      <!-- MODAL PERDIO -->
+      <div class="modal fade" id="modalPerdio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabel">Se acabo el tiempo!</h4>
+                     <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                     </button>       
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
 
-<form name="juego">
-<ul>
-   <li>
-   Primer número: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
-  
-  </li>
-  <li>
-   Operador: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
-    
-  </li>
-  <li>
-   Segundo número: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
-    
-  </li>
-  <li>
-    Respuesta: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
-     
-   </li>
-  <li>
-    <h2 [hidden]="ocultarVerificar" ><button (click)="verificar()" class="btn btn-success btn-lg">Verificar {{Tiempo}} </button></h2>
-  </li>
-  <li>
-    <h2 [hidden]="!ocultarVerificar"><button  (click)="NuevoJuego()"  class="btn btn-info btn-lg">Nuevo</button></h2>
-  </li>
-  <li>
-    <h2><p><i class="fa fa-spinner fa-spin"></i>Esperando numero...</p></h2>
-
-    <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-    <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
-  </li>
-</ul>
-
-</form>
+   </div>
+</div>

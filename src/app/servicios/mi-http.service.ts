@@ -14,12 +14,12 @@ export class MiHttpService {
   
   public httpGetPromise(url: string, objeto:any){
 
-
     return this.http
     .get(url)
     .toPromise()
     .then(this.extraerDatos)
     .catch(this.handleError);
+    
   }
 
   private extraerDatos(resp:Response) {

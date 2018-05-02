@@ -1,26 +1,89 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--app-menu></app-menu-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div style="text-align:center">
-  <h1>
-    {{nuevoJuego.nombre}}!
-  </h1>
- </div>
-<h2></h2>
-<form name="juego">
+<div class="container">
+   <div class="row">
+      <div class="col-sm-8">
+         <h1 class="presentation-title">Adivina el numero</h1>
+         <br><br><br>
+         <div class="board" id="board">
+           <div id="palabra" style="visibility:hidden;">
+            <h1 id='palabraEnJuego'>?</h1>
+           </div>
+           <div id="eleccionUsuario" style="visibility:hidden;">
+            <input class="eleccionUsuario" id="eleccionUsuario" type="number" name="palabraElegida" [(ngModel)]="this.juegoAdivina.eleccionUsuario">
+           </div>
+         </div>
+         <button id="nuevoJuego" class="button btn btn-success" (click)="NuevoJuego()">Jugar</button>
+         <button id="validarJuego" class="button btn btn-success" (click)="Validar()" disabled>Validar</button>
+         <div id="carga"></div>
+      </div>
+    <div class="col-sm-4">
+     <div class="enjoy-css tiempo">
+        Tiempo: <br> {{ counter | async }}
+     </div><br>
+     <div class="enjoy-css reintentos">
+        Reintentos: {{ reintentos }}
+     </div>
+    </div>
+      <!-- MODAL TODAVIA NO GANA -->
+      <div class="modal fade" id="modalFalta" tabindex="-1" role="dialog" aria-labelledby="myModalLabelFalta" aria-hidden="true">
+         <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabelFalta">Todavia no esta completo, siga intentando!</h4>
+                     <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                     </button>       
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- MODAL GANO LOGGEADO -->
+      <div class="modal fade" id="modalFelicidadesLogged" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabel">Felicidades!</h4>
+                     <h2 id="userErrorTitle" style="visibility:hidden; color:red">Error</h2><br>
+                     <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                     </button>  
+                  </div>
+                  <div clasS="modal-body">
+                     <h5 id="myModalLabel">Ud termino en {{segundosFinales}} segundos con {{reintentosFinales}} reintentos</h5>
+                     <h2 id="userErrorBody" style="visibility:hidden; color:red">Ocurrio un error al intentar guardar su partida</h2><br>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- MODAL NO LOGGEADO -->
+      <div class="modal fade" id="modalNotLogged" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title" id="myModalLabel">Error</h4>
+                     <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                     </button>  
+                  </div>
+                  <div clasS="modal-body">
+                    <h5>Necesita estar logeado o registrado para poder guardar sus partidas!</h5>
+                    <button class="button btn btn-success" (click)="loguearse()">Loguearse</button> 
+                    <button class="button btn btn-primary" (click)="registrarse()">Registrarse</button>
+                    <button class="button btn btn-danger" data-dismiss="modal">
+                       <span aria-hidden="true">Cancelar</span>
+                    </button>  
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
 
-   <label>ingrese numero:  </label>  <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
-    <h1>{{nuevoJuego.numeroIngresado}}  </h1>
- 
-    <h2 [hidden]="ocultarVerificar"><button  *ngIf="nuevoJuego.numeroSecreto!=0" (click)="verificar()" class="btn btn-success btn-lg">Verificar</button></h2>
- 
-    <h2><button *ngIf="nuevoJuego.numeroSecreto==0 " (click)="generarnumero()"  class="btn btn-info btn-lg">Nuevo número secreto</button></h2>
- 
-    <h2><p *ngIf="nuevoJuego.numeroSecreto!=0" ><i class="fa fa-spinner fa-spin"></i>Esperando que ingrese un número</p></h2>
-
-    <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-    <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
-
-
-</form>
-<div id="snackbar">{{Mensajes}}</div>
+   </div>
+</div>

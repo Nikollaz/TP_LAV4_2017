@@ -48,7 +48,7 @@
    <table id="partidas" class="table table-striped table-bordered tabla-partidas">
       <thead class="thead-dark" id="tabla-partidas-header">
          <tr>
-            <th colspan="3">Agilidad</th>
+            <th colspan="3">Agilidad aritmetica</th>
          </tr>
          <tr>
             <th scope="col">Jugador</th>
@@ -72,14 +72,12 @@
          </tr>
          <tr>
             <th scope="col">Jugador</th>
-            <th scope="col">Tiempo</th>
             <th scope="col">Resultado</th>
          </tr>
       </thead>
       <tbody id="tabla-partidas-body">
          <tr *ngFor="let juego of listado">
             <td *ngIf="juego.Juego=='Tateti'">{{juego.Jugador}}</td>
-            <td *ngIf="juego.Juego=='Tateti'">{{juego.Data.Tiempo}}</td>
             <td *ngIf="juego.Juego=='Tateti'">{{juego.Data.Resultado}}</td>
          </tr>
       </tbody>
@@ -106,7 +104,7 @@
    <table id="partidas" class="table table-striped table-bordered tabla-partidas">
       <thead class="thead-dark" id="tabla-partidas-header">
          <tr>
-            <th colspan="3">Adivina</th>
+            <th colspan="3">Adivina el numero</th>
          </tr>
          <tr>
             <th scope="col">Jugador</th>

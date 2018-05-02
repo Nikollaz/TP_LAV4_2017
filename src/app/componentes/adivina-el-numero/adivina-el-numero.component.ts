@@ -1,6 +1,16 @@
-
-import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JuegoAdivina } from '../../clases/juego-adivina'
+
+import { Router } from '@angular/router';
+import { NgModel } from '@angular/forms';
+
+import { Observable } from 'rxjs/Observable';
+
+import "rxjs/add/observable/interval";
+
+import { Subscription } from 'rxjs/Subscription';
+
+import * as myGlobals from '../../clases/constantes';
 
 @Component({
   selector: 'app-adivina-el-numero',
@@ -8,86 +18,161 @@ import { JuegoAdivina } from '../../clases/juego-adivina'
   styleUrls: ['./adivina-el-numero.component.css']
 })
 export class AdivinaElNumeroComponent implements OnInit {
-  /*
- @Output() enviarJuego: EventEmitter<any>= new EventEmitter<any>();
 
-  nuevoJuego: JuegoAdivina;
-  Mensajes:string;
-  contador:number;
-  ocultarVerificar:boolean;
- 
-  constructor() { 
-    this.nuevoJuego = new JuegoAdivina();
-    console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
-    this.ocultarVerificar=false;
+  private juegoAdivina:JuegoAdivina;
+  private reintentos: number;
+
+  private segundosFinales: number;
+  private reintentosFinales: number;
+
+  counter: Observable<number>;
+  subscribedCounter: number;
+  private _subscription:Subscription
+
+  constructor( public router: Router ) {
+
+    this.juegoAdivina = new JuegoAdivina();
+    this.reintentos = 0;
+
+    this.segundosFinales = 0;
+    this.reintentosFinales = 0;
+
   }
-  generarnumero() {
-    this.nuevoJuego.generarnumero();
-    this.contador=0;
-  }
-  verificar()
-  {
-    this.contador++;
-    this.ocultarVerificar=true;
-    console.info("numero Secreto:",this.nuevoJuego.gano);  
-    if (this.nuevoJuego.verificar()){
-      
-      this.enviarJuego.emit(this.nuevoJuego);
-      this.MostarMensaje("Sos un Genio!!!",true);
-      this.nuevoJuego.numeroSecreto=0;
 
-    }else{
+  ngOnInit() {
 
-      let mensaje:string;
-      switch (this.contador) {
-        case 1:
-          mensaje="No, intento fallido, animo";
-          break;
-          case 2:
-          mensaje="No,Te estaras Acercando???";
-          break;
-          case 3:
-          mensaje="No es, Yo crei que la tercera era la vencida.";
-          break;
-          case 4:
-          mensaje="No era el  "+this.nuevoJuego.numeroIngresado;
-          break;
-          case 5:
-          mensaje=" intentos y nada.";
-          break;
-          case 6:
-          mensaje="Afortunado en el amor";
-          break;
-      
-        default:
-            mensaje="Ya le erraste "+ this.contador+" veces";
-          break;
+    this.juegoAdivina = new JuegoAdivina();
+
+    // Execute a function when the user releases a key on the keyboard
+    document.getElementById("eleccionUsuario").addEventListener("keyup", function(event) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Trigger the button element with a click
+        document.getElementById("validarJuego").click();
       }
-      this.MostarMensaje("#"+this.contador+" "+mensaje+" ayuda :"+this.nuevoJuego.retornarAyuda());
-     
+    });
+
+  }
+
+
+  NuevoJuego(){
+
+      if ( localStorage.getItem("usuarioLogeado") === null || localStorage.getItem("usuarioLogeado") === "") {
+
+      $('#modalNotLogged').modal('show');
+
+    } else {
+
+      this.juegoAdivina = new JuegoAdivina();
+      this.reintentos = 0;
+
+      this.counter = Observable.interval(1000);
+      this._subscription = this.counter.subscribe(
+        v => { this.subscribedCounter = v; }
+      );
+
+      this.juegoAdivina.cargarSolucion();
+      
+      $("#palabraEnJuego").html(this.juegoAdivina.numeroSignos);
+      $("#palabra").css("visibility", "visible");
+      $("#eleccionUsuario").css("visibility", "visible");
+
+      ( <HTMLInputElement> document.getElementById("validarJuego") ).disabled = false;
 
     }
-    console.info("numero Secreto:",this.nuevoJuego.gano);  
-  }  
 
-  MostarMensaje(mensaje:string="este es el mensaje",ganador:boolean=false) {
-    this.Mensajes=mensaje;    
-    var x = document.getElementById("snackbar");
-    if(ganador)
-      {
-        x.className = "show Ganador";
-      }else{
-        x.className = "show Perdedor";
-      }
-    var modelo=this;
-    setTimeout(function(){ 
-      x.className = x.className.replace("show", "");
-      modelo.ocultarVerificar=false;
-     }, 3000);
-    console.info("objeto",x);
-  
-   } */
-  ngOnInit() {
   }
-  
+
+  Validar(){
+
+    ( <HTMLInputElement> document.getElementById("validarJuego") ).disabled = true;
+
+    let gano:boolean = this.juegoAdivina.verificar();
+
+    if ( gano ) {
+      
+      $("#palabraEnJuego").html( this.juegoAdivina.solucion.toString());
+
+      this.segundosFinales = this.subscribedCounter;
+      this.reintentosFinales = this.reintentos;
+
+      let juego:string = "Adivina";
+      let jugador:string = <string>localStorage.getItem("usuarioLogeado");
+      let Data:string = JSON.stringify({
+
+      "Tiempo": this.subscribedCounter,
+      "Reintentos": this.reintentos
+
+      }); // {"Tiempo":230,"Reintentos":5}
+
+      let datos:string = "Juego=" + juego + "&Jugador=" + jugador + "&Data=" + Data;
+
+      $.ajax({
+        type: "POST",
+        url: myGlobals.SERVER + "/partidas",
+        data: datos,
+        dataType: "text",
+        async: false,
+        beforeSend: function() {
+
+          $("#carga").html(myGlobals.LOADING_GIF);
+
+        },
+        success: function(response) {
+
+          if( JSON.parse(response).hasOwnProperty('Estado') && JSON.parse(response).Estado === "Error"){
+
+            $("#myModalLabel").css("visibility", "hidden");
+            $("#userErrorTitle").css("visibility", "visible");
+            $("#userErrorBody").css("visibility", "visible");
+
+          } else {
+
+            $('#modalFelicidadesLogged').modal('show');
+
+          }
+
+          $("#carga").html("");
+          localStorage.setItem("success", "1");
+
+        }
+
+      });
+
+      if( localStorage.getItem("success") === "1"){
+
+        this.counter = null;
+        this.subscribedCounter = null;
+        this._subscription.unsubscribe();
+        this.reintentos = 0;
+        localStorage.removeItem("success");
+            
+      }
+
+    } else if(this.juegoAdivina.eleccionUsuario < this.juegoAdivina.solucion){
+
+      $('#myModalLabelFalta').html('Esta por debajo de la solucion!');
+      $('#modalFalta').modal('show');
+
+      this.reintentos++;
+
+      ( <HTMLInputElement> document.getElementById("validarJuego") ).disabled = false;
+
+    } else if(this.juegoAdivina.eleccionUsuario > this.juegoAdivina.solucion){
+
+      $('#myModalLabelFalta').html('Esta por encima de la solucion!');
+      $('#modalFalta').modal('show');
+
+      this.reintentos++;
+
+      ( <HTMLInputElement> document.getElementById("validarJuego") ).disabled = false;
+
+    }
+
+  }
+
+
+
 }

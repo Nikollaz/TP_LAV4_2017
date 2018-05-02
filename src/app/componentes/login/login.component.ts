@@ -1,21 +1,10 @@
-import {
-    Component,
-    OnInit
-} from '@angular/core';
-
-import {
-    Subscription
-} from "rxjs";
-import {
-    TimerObservable
-} from "rxjs/observable/TimerObservable";
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from "rxjs";
+import { TimerObservable } from "rxjs/observable/TimerObservable";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-import {
-    Router,
-    ActivatedRoute,
-    ParamMap
-} from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { LoginService } from '../../servicios/login.service';
 
 import * as myGlobals from '../../clases/constantes';
 
@@ -26,7 +15,11 @@ import * as myGlobals from '../../clases/constantes';
 })
 export class LoginComponent implements OnInit {
 
-    constructor( private router: Router ) {
+    miServicioLogin:LoginService;
+
+    constructor( private router: Router, servicioLogin:LoginService ) {
+
+        this.miServicioLogin = servicioLogin;
 
         if (this.getCookie("email") !== "" && this.getCookie("password") !== "") {
 
@@ -66,8 +59,6 @@ export class LoginComponent implements OnInit {
 
     login() {
 
-        localStorage.setItem("success", "0");
-
         $("#email").css("border-color", "");
         $("#password").css("border-color", "");
         $("#emailError").css("visibility", "hidden");
@@ -88,47 +79,31 @@ export class LoginComponent implements OnInit {
 
             var datos = "email=" + email + "&password=" + password;
 
-            $.ajax({
-                type: "POST",
-                url: myGlobals.SERVER + "/login",
-                data: datos,
-                dataType: "text",
-                async: false,
-                beforeSend: function() {
+            $("#carga").html(myGlobals.LOADING_GIF);
 
-                    $("#carga").html(myGlobals.LOADING_GIF);
+            this.miServicioLogin.nuevo(datos, 'application/x-www-form-urlencoded')
+            .then( response => {
 
-                },
-                success: function(response) {
+                if( response.hasOwnProperty('Estado') && response.Estado === "Error"){
 
-                    if( JSON.parse(response).hasOwnProperty('Estado') && JSON.parse(response).Estado === "Error"){
+                  $("#userError").css("visibility", "visible");
 
-                      $("#userError").css("visibility", "visible");
+                } else {
 
-                    } else {
+                  var SessionToken = response.SessionToken;
 
-                      var SessionToken = JSON.parse(response).SessionToken;
+                  localStorage.setItem("SessionToken", SessionToken);
+                  myGlobals.setActiveProfile( response.perfil );
+                  localStorage.setItem("perfil", myGlobals.ACTIVE_PROFILE);
+                  localStorage.setItem("usuarioLogeado", <string>email);
 
-                      localStorage.setItem("SessionToken", SessionToken);
-                      myGlobals.setActiveProfile( JSON.parse(response).perfil );
-                      localStorage.setItem("perfil", myGlobals.ACTIVE_PROFILE);
-                      localStorage.setItem("usuarioLogeado", <string>email);
+                  this.router.navigate(["/Principal"]); 
 
-                      localStorage.setItem("success", "1");
-
-                    }
-
-                    $("#carga").html("");
-                    
                 }
 
-            });
+                $("#carga").html("");
 
-            if( localStorage.getItem("success") === "1"){
-                
-                this.router.navigate(["/Principal"]); 
-                
-            }
+            });
             
         }
 

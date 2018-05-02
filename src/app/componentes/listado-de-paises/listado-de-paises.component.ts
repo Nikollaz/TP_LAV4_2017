@@ -9,7 +9,7 @@ import { PaisesService } from '../../servicios/paises.service';
 export class ListadoDePaisesComponent implements OnInit {
   public listadoDePaises: Array<any>;
   miServicioDePaises:PaisesService;
-  constructor( servicioPaises:PaisesService) {
+  constructor( servicioPaises:PaisesService ) {
     this.miServicioDePaises=servicioPaises;
    }
 
